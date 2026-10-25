@@ -44,7 +44,7 @@ Data exploration, preprocessing, baseline model comparison are performed in Goog
 - **Data Preparation** — Prepare features and target labels for model experiments.
 - **Baseline Model Comparison** — Evaluate eight classification algorithms using accuracy, recall, precision, and F1-score.
 - **Random Forest Integration** — Integrate the selected KNN classifier into the web application.
-- **Interactive Assessment** — Submit 13 cardiovascular health indicators through a web form.
+- **Interactive Assessment** — Submit 15 lung health indicators through a web form.
 - **Visualization Reports** — Store plots from data analysis and model experiments.
 - **Flask Web Application** — Serve the assessment interface and prediction functionality.
 
