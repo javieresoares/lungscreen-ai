@@ -24,9 +24,9 @@
 </p>
 
 
-LungScreen AI is an educational machine learning web application that demonstrates how cardiovascular health indicators can be used to generate heart disease prediction results using a Random Forest classifier.
+LungScreen AI is an educational machine learning web application that demonstrates how lung health indicators can be used to classify lung cancer risk using a Random Forest classifier.
 
-The project combines data exploration and model experimentation in Google Colab with a Flask-based web application, creating an end-to-end machine learning portfolio project.
+The project combines data exploration and model experimentation in a Jupyter notebook with a Flask-based web application, creating an end-to-end machine learning portfolio project.
 
 > **Disclaimer:** This project is intended for educational and portfolio purposes only. It is not a medical diagnostic tool and must not be used to make healthcare decisions.
 
@@ -40,13 +40,13 @@ Data exploration, preprocessing, baseline model comparison are performed in Goog
 
 ### Key Features
 
-- **Exploratory Data Analysis** — Investigate the dataset and target distribution in Google Colab.
-- **Data Preparation** — Prepare features and target labels for model experiments.
+- **Exploratory Data Analysis** — Investigate the lung cancer dataset and target distribution in a Jupyter notebook.
+- **Data Preparation** — Prepare lung health indicators and target labels for model experiments.
 - **Baseline Model Comparison** — Evaluate eight classification algorithms using accuracy, recall, precision, and F1-score.
-- **Random Forest Integration** — Integrate the selected KNN classifier into the web application.
-- **Interactive Assessment** — Submit 15 lung health indicators through a web form.
-- **Visualization Reports** — Store plots from data analysis and model experiments.
-- **Flask Web Application** — Serve the assessment interface and prediction functionality.
+- **Random Forest Integration** — Integrate the selected Random Forest classifier into the web application.
+- **Interactive Assessment** — Submit 15 lung health indicators through a web form to generate a lung cancer risk classification.
+- **Visualization Reports** — Store plots from data analysis, target distribution, feature relationships, and model experiments.
+- **Flask Web Application** — Serve the lung health assessment interface and prediction functionality.
 
 ---
 
