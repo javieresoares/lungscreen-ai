@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Essential Metadata -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0D47A1" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Primary SEO -->
+  <title>LungScreen AI | AI-Powered Lung Health Assessment</title>
+
+  <meta
+    name="description"
+    content="Explore LungScreen AI, an educational machine learning project demonstrating lung cancer risk classification using 15 health indicators and a Random Forest model."
+  />
+
+  <meta name="author" content="LungScreen AI" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Canonical URL -->
+  <!-- Enable after deployment and replace with your actual public URL -->
+  <!--
+  <link
+    rel="canonical"
+    href="https://YOUR-RENDER-URL.onrender.com/"
+  />
+  -->
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="LungScreen AI" />
+  <meta
+    property="og:title"
+    content="LungScreen AI | AI-Powered Lung Health Assessment"
+  />
+  <meta
+    property="og:description"
+    content="Explore an educational machine learning demo that analyzes 15 lung health indicators using a Random Forest model."
+  />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Enable after deployment -->
+  <!--
+  <meta
+    property="og:url"
+    content="https://YOUR-RENDER-URL.onrender.com/"
+  />
+  <meta
+    property="og:image"
+    content="https://YOUR-RENDER-URL.onrender.com/static/images/lungscreen-social-preview.png"
+  />
+  <meta
+    property="og:image:alt"
+    content="LungScreen AI — AI-powered lung health assessment using machine learning"
+  />
+  <meta property="og:image:width" content="1648" />
+  <meta property="og:image:height" content="928" />
+  -->
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="LungScreen AI | AI-Powered Lung Health Assessment"
+  />
+  <meta
+    name="twitter:description"
+    content="An educational machine learning project exploring lung cancer risk classification with 15 health indicators and a Random Forest model."
+  />
+
+  <!-- Enable after deployment -->
+  <!--
+  <meta
+    name="twitter:image"
+    content="https://YOUR-RENDER-URL.onrender.com/static/images/lungscreen-social-preview.png"
+  />
+  <meta
+    name="twitter:image:alt"
+    content="LungScreen AI lung health assessment platform"
+  />
+  -->
+
+  <!-- Favicon: Standard -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="{{ url_for('static', filename='images/favicon-16x16.png') }}"
+  />
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="{{ url_for('static', filename='images/favicon-32x32.png') }}"
+  />
+
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="{{ url_for('static', filename='images/favicon.ico') }}"
+  />
+
+  <!-- Apple Touch Icon -->
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="{{ url_for('static', filename='images/apple-touch-icon.png') }}"
+  />
+
+  <!-- Android Icons -->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="{{ url_for('static', filename='images/android-chrome-192x192.png') }}"
+  />
+
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="{{ url_for('static', filename='images/android-chrome-512x512.png') }}"
+  />
+
+  <!-- Web App Manifest -->
+  <link
+    rel="manifest"
+    href="{{ url_for('static', filename='images/site.webmanifest') }}"
+  />
+
+  <!-- Resource Optimization -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Main Stylesheet -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+  />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <!-- Logo -->
+      <a class="brand-logo" href="#home" aria-label="LungScreen AI - Home">
+        <span class="brand-icon" aria-hidden="true">
+          <!-- Lung Icon -->
+          <svg viewBox="0 0 40 40" fill="none">
+            <path d="M18.5 8V18
+               C16 15 13.5 12 11.5 13
+               C9.5 14 8 18 6.5 22
+               C4.5 27 6 32 11 33
+               C15 34 18.5 30 18.5 25V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M21.5 8V18
+               C24 15 26.5 12 28.5 13
+               C30.5 14 32 18 33.5 22
+               C35.5 27 34 32 29 33
+               C25 34 21.5 30 21.5 25V18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M20 5V21
+               M18.5 13L14 17
+               M21.5 13L26 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+
+        <span class="brand-wordmark"> LungScreen <span>AI</span> </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-navigation" id="main-navigation" aria-label="Main navigation">
+        <a class="nav-link active" href="#home" data-nav="home" aria-current="page">
+          Home
+        </a>
+
+        <a class="nav-link" href="#about" data-nav="about"> About </a>
+
+        <a class="nav-link" href="#technology" data-nav="technology">
+          Technology
+        </a>
+
+        <a class="nav-link" href="#features" data-nav="features">
+          Features
+        </a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <a class="header-cta" href="#try-it">
+          Try Demo
+
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-button" type="button" aria-label="Open navigation menu"
+          aria-expanded="false" aria-controls="main-navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <!-- End LungCancer AI Header -->
+
+  <!-- Hero -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <!-- Left: Hero Content -->
+      <div class="hero-content scroll-reveal">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          AI-POWERED LUNG CANCER RISK ANALYSIS
+        </div>
+
+        <h1 class="hero-title">
+          Understand Your
+          <span class="hero-title-highlight">Lung Health</span>
+          Through AI
+        </h1>
+
+        <p class="hero-description">
+          Explore how machine learning analyzes health and lifestyle
+          indicators to estimate lung cancer risk through an interactive,
+          data-driven experience.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#try-it" class="hero-button-primary">
+            Try Demo
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <a href="#technology" class="hero-button-secondary">
+            Explore Technology
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <span>
+            Educational machine learning project, not a medical diagnosis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Right: Lung Visual -->
+      <div class="hero-visual scroll-reveal reveal-scale">
+        <div class="hero-visual-panel">
+          <div class="hero-visual-top">
+            <div>
+              <span class="visual-overline">LUNG HEALTH AI</span>
+              <h2>Lung Health Insights</h2>
+            </div>
+            <span class="visual-status">
+              <span></span>
+              AI MODEL
+            </span>
+          </div>
+
+          <!-- Decorative lung illustration -->
+          <div class="hero-heart-stage">
+            <div class="heart-orbit heart-orbit-outer"></div>
+            <div class="heart-orbit heart-orbit-inner"></div>
+
+            <div class="heart-center-glow"></div>
+
+            <svg class="hero-heart-svg" viewBox="0 0 280 250" fill="none" role="img"
+              aria-label="Stylized blue lung illustration with bronchial airways">
+              <defs>
+                <linearGradient id="heartGradient" x1="54" y1="35" x2="218" y2="218" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#90CAF9" />
+                  <stop offset="48%" stop-color="#2196F3" />
+                  <stop offset="100%" stop-color="#0D47A1" />
+                </linearGradient>
+
+                <linearGradient id="heartHighlight" x1="75" y1="45" x2="150" y2="180" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#E3F2FD" />
+                  <stop offset="100%" stop-color="#90CAF9" />
+                </linearGradient>
+              </defs>
+
+              <!-- Left lung -->
+              <path class="lung-left" d="M128 77
+     C112 65 102 72 94 87
+     C83 107 76 130 67 148
+     C56 171 45 190 52 205
+     C59 221 81 220 101 210
+     C119 201 130 180 132 156
+     L132 99
+     C132 89 131 82 128 77Z" fill="url(#heartGradient)" stroke="#0D47A1" stroke-width="1.5" stroke-linejoin="round" />
+
+              <!-- Right lung -->
+              <path class="lung-right" d="M152 77
+     C168 65 178 72 186 87
+     C197 107 204 130 213 148
+     C224 171 235 190 228 205
+     C221 221 199 220 179 210
+     C161 201 150 180 148 156
+     L148 99
+     C148 89 149 82 152 77Z" fill="url(#heartGradient)" stroke="#0D47A1" stroke-width="1.5" stroke-linejoin="round" />
+
+              <!-- Soft lung highlights -->
+              <path class="lung-highlight-left" d="M91 95
+     C78 116 68 145 60 169
+     C55 185 59 197 69 202
+     C78 205 91 197 101 183
+     C87 187 78 177 81 162
+     C85 139 99 114 108 100Z" fill="url(#heartHighlight)" opacity="0.55" />
+
+              <path class="lung-highlight-right" d="M189 95
+     C202 116 212 145 220 169
+     C225 185 221 197 211 202
+     C202 205 189 197 179 183
+     C193 187 202 177 199 162
+     C195 139 181 114 172 100Z" fill="url(#heartHighlight)" opacity="0.4" />
+
+              <!-- Trachea -->
+              <path d="M133 25
+                 L133 81
+                 C133 91 137 97 140 103
+                 C143 97 147 91 147 81
+                 L147 25" fill="#90CAF9" stroke="#0D47A1" stroke-width="2" stroke-linejoin="round" />
+
+              <!-- Main bronchi -->
+              <path d="M140 96
+                 L140 111
+                 L119 131
+                 M140 111
+                 L161 131" stroke="#E3F2FD" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+              <path d="M140 96
+                 L140 111
+                 L119 131
+                 M140 111
+                 L161 131" stroke="#0D47A1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+              <!-- Branching airways -->
+              <path d="M119 131 L103 146 L95 165
+                 M119 131 L119 153 L110 173
+                 M161 131 L177 146 L185 165
+                 M161 131 L161 153 L170 173" stroke="#E3F2FD" stroke-width="4" stroke-linecap="round"
+                stroke-linejoin="round" />
+
+              <!-- Airway details -->
+              <path d="M103 146 L86 151
+                 M95 165 L79 174
+                 M119 153 L129 169
+                 M177 146 L194 151
+                 M185 165 L201 174
+                 M161 153 L151 169" stroke="#0D47A1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                opacity="0.85" />
+
+              <!-- Subtle diagnostic scan line -->
+              <path d="M48 184 H232" stroke="#E3F2FD" stroke-width="2" stroke-dasharray="4 6" opacity="0.8" />
+
+              <!-- Scan points -->
+              <circle cx="95" cy="165" r="4" fill="#E3F2FD" />
+              <circle cx="185" cy="165" r="4" fill="#E3F2FD" />
+              <circle cx="140" cy="111" r="4" fill="#FFFFFF" />
+            </svg>
+
+            <span class="heart-decoration heart-decoration-one"></span>
+            <span class="heart-decoration heart-decoration-two"></span>
+            <span class="heart-decoration heart-decoration-three"></span>
+          </div>
+
+          <!-- Bottom information -->
+          <div class="hero-visual-footer">
+            <div class="visual-metric">
+              <span class="visual-metric-icon">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M3 10h4l2-4 3 8 2-4h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </span>
+              <div>
+                <span class="visual-metric-label">Health indicators</span>
+                <strong>Risk Factors</strong>
+              </div>
+            </div>
+
+            <div class="visual-divider"></div>
+
+            <div class="visual-metric">
+              <span class="visual-metric-icon">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="6.5" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </span>
+              <div>
+                <span class="visual-metric-label">Prediction system</span>
+                <strong>ML Classifier</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-floating-label">
+          <span class="floating-label-icon">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 17s-6.5-4-6.5-9A3.5 3.5 0 0 1 10 6
+              a3.5 3.5 0 0 1 6.5 2c0 5-6.5 9-6.5 9Z" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </span>
+          <span>Understand risks. Support awareness.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <!-- LungScreen AI — Project Highlights -->
+  <section class="project-highlights" aria-label="Project highlights">
+    <div class="highlights-container">
+      <article class="highlight-item scroll-reveal">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 3v7" stroke-linecap="round" />
+            <path d="M10 10C7 7 5 9 4.5 12.5 4 16 5 20 9 20c2 0 3-2 3-5V10Z" stroke-linejoin="round" />
+            <path d="M14 10c3-3 5-1 5.5 2.5.5 3.5-.5 7.5-4.5 7.5-2 0-3-2-3-5V10Z" stroke-linejoin="round" />
+            <path d="M12 10v5" stroke-linecap="round" />
+          </svg>
+        </div>
+        <!-- Highlight 1 -->
+        <div class="highlight-copy">
+          <h3>15 Health Indicators</h3>
+          <p>Structured health and lifestyle risk factors</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="1">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3.5" y="4" width="17" height="16" rx="3" />
+            <path d="M7 12h2.5l1.8-3 2.5 6 1.6-3H17" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <!-- Highlight 2 -->
+        <div class="highlight-copy">
+          <h3>Random Forest Classifier</h3>
+          <p>Ensemble machine learning for lung cancer risk prediction</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="2">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="6" cy="6" r="2.2" />
+            <circle cx="18" cy="6" r="2.2" />
+            <circle cx="12" cy="18" r="2.2" />
+            <path d="M8 7.2 10.8 16M16 7.2 13.2 16M8.5 6h7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>Integrated ML Pipeline</h3>
+          <p>Connected preprocessing and model inference</p>
+        </div>
+      </article>
+
+      <article class="highlight-item scroll-reveal" data-delay="3">
+        <div class="highlight-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M4 19V5M4 19h16" />
+            <path d="m7 15 4-4 3 2 5-6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="19" cy="7" r="1.2" fill="currentColor" stroke="none" />
+          </svg>
+        </div>
+        <div class="highlight-copy">
+          <h3>Risk Prediction Insights</h3>
+          <p>Explore model predictions through an interactive interface</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- End Project Highlights -->
+
+  <!-- About -->
+  <section class="about-section" id="about">
+    <!-- About Project -->
+    <div class="about-container">
+      <div class="about-intro about-reveal">
+        <span class="about-eyebrow">ABOUT THE PROJECT</span>
+
+        <h2 class="about-title">
+          Turning Health Data into
+          <span>Meaningful Predictions</span>
+        </h2>
+
+        <p class="about-description">
+          LungScreen AI explores how machine learning analyzes 15 health and
+          lifestyle indicators to estimate lung cancer risk through an
+          interactive, data-driven experience.
+        </p>
+      </div>
+
+      <div class="about-overview">
+        <!-- Purpose -->
+        <article class="about-card about-reveal">
+          <div class="about-card-number">01</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <path d="M10 10C7 7 5 9 4.5 12.5 4 16 5 20 9 20c2 0 3-2 3-5V10Z" stroke="currentColor" stroke-width="1.6"
+                stroke-linejoin="round" />
+              <path d="M14 10c3-3 5-1 5.5 2.5.5 3.5-.5 7.5-4.5 7.5-2 0-3-2-3-5V10Z" stroke="currentColor"
+                stroke-width="1.6" stroke-linejoin="round" />
+              <path d="M12 10v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+          </div>
+
+          <h3>Data-Driven Risk Assessment</h3>
+
+          <p>
+            Explore how 15 health and lifestyle indicators serve as input
+            features for a machine learning-based lung cancer risk prediction
+            model.
+          </p>
+        </article>
+
+        <!-- Technology -->
+        <article class="about-card about-reveal" data-delay="1">
+          <div class="about-card-number">02</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+              <path d="M7 12h2.5l2-4 3 8 2-4H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h3>Random Forest Classifier</h3>
+
+          <p>
+            An ensemble learning algorithm combines multiple decision trees to
+            classify input data and generate a lung cancer risk prediction.
+          </p>
+        </article>
+
+        <!-- User experience -->
+        <article class="about-card about-reveal" data-delay="2">
+          <div class="about-card-number">03</div>
+
+          <div class="about-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" />
+              <path d="M8 21h8M12 18v3M7 10h3l1.5-2.5L14 13l1.5-3H17" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <h3>Interactive Experience</h3>
+
+          <p>
+            Enter health and lifestyle information, explore the model's
+            prediction output, and understand the application's machine
+            learning workflow.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Project Workflow -->
+    <div class="about-workflow-wrap">
+      <div class="about-workflow about-reveal">
+        <div class="about-workflow-copy">
+          <span class="about-eyebrow">HOW IT WORKS</span>
+
+          <h3>From Health Indicators to Insights</h3>
+
+          <p>
+            A structured machine learning workflow transforms user inputs into
+            a prediction through preprocessing and Random Forest inference.
+          </p>
+        </div>
+
+        <div class="about-workflow-steps">
+          <div class="about-step">
+            <span class="about-step-index">01</span>
+            <span class="about-step-title">Health Indicators</span>
+            <span class="about-step-description">15 input features</span>
+          </div>
+
+          <span class="about-step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="about-step">
+            <span class="about-step-index">02</span>
+            <span class="about-step-title">Preprocessing</span>
+            <span class="about-step-description">Input preparation</span>
+          </div>
+
+          <span class="about-step-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <div class="about-step about-step-final">
+            <span class="about-step-index">03</span>
+            <span class="about-step-title">Random Forest</span>
+            <span class="about-step-description">Risk prediction</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="about-disclaimer about-reveal">
+        LungScreen AI is an educational machine learning project and does not
+        provide a medical diagnosis. Its predictions should not replace
+        professional medical advice, screening, or treatment.
+      </p>
+    </div>
+  </section>
+  <!-- End About -->
+
+  <!-- Technology -->
+  <section class="technology-section" id="technology">
+    <div class="technology-container">
+      <!-- Section Heading -->
+      <div class="technology-heading tech-reveal">
+        <span class="technology-eyebrow">TECHNOLOGY STACK</span>
+
+        <h2 class="technology-title">
+          The Technology Behind
+          <span>LungScreen AI</span>
+        </h2>
+
+        <p class="technology-description">
+          A practical combination of machine learning and web technologies
+          that transforms 15 health and lifestyle indicators into an
+          interactive lung cancer risk prediction experience.
+        </p>
+      </div>
+
+      <!-- Technology Cards -->
+      <div class="technology-grid">
+        <!-- Python -->
+        <article class="technology-card tech-reveal">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 3.2H8.1A3.1 3.1 0 0 0 5 6.3v3.1h6.2v1.2H5A3.1 3.1 0 0 0 1.9 13.7v1.1A3.1 3.1 0 0 0 5 17.9h2.1v-2.5A3.1 3.1 0 0 1 10.2 12h3.6a3.1 3.1 0 0 0 3.1-3.1V6.3a3.1 3.1 0 0 0-3.1-3.1H12Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <path
+                  d="M12 20.8h3.9a3.1 3.1 0 0 0 3.1-3.1v-3.1h-6.2v-1.2H19a3.1 3.1 0 0 0 3.1-3.1V9.2A3.1 3.1 0 0 0 19 6.1h-2.1v2.5a3.1 3.1 0 0 1-3.1 3.4h-3.6a3.1 3.1 0 0 0-3.1 3.1v2.6a3.1 3.1 0 0 0 3.1 3.1H12Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+                <circle cx="9" cy="6.8" r=".8" fill="currentColor" />
+                <circle cx="15" cy="17.2" r=".8" fill="currentColor" />
+              </svg>
+            </div>
+
+            <span class="technology-number">01</span>
+          </div>
+
+          <h3>Python</h3>
+
+          <p>
+            Powers the machine learning workflow, handles input processing,
+            and connects the trained prediction model with the application
+            backend.
+          </p>
+
+          <div class="technology-tags">
+            <span>Data Processing</span>
+            <span>Model Integration</span>
+          </div>
+        </article>
+
+        <!-- Scikit-learn -->
+        <article class="technology-card tech-reveal" data-delay="1">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="5" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="5" cy="18" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="19" cy="18" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="12" cy="12" r="2.1" stroke="currentColor" stroke-width="1.5" />
+                <path d="m10.9 6.8-1.7 3.4M13.1 6.8l1.7 3.4M10 13.7l-3.3 2.7m7.3-2.7 3.3 2.7" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">02</span>
+          </div>
+
+          <h3>Scikit-learn</h3>
+
+          <p>
+            Provides StandardScaler for feature scaling and the Random Forest
+            classifier to estimate lung cancer risk from the input indicators.
+          </p>
+
+          <div class="technology-tags">
+            <span>StandardScaler</span>
+            <span>Random Forest</span>
+          </div>
+        </article>
+
+        <!-- Flask -->
+        <article class="technology-card tech-reveal" data-delay="2">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3.5" y="4" width="17" height="16" rx="3" stroke="currentColor" stroke-width="1.5" />
+                <path d="M7 9h10M7 12h6M7 15h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">03</span>
+          </div>
+
+          <h3>Flask</h3>
+
+          <p>
+            Connects the web interface to the Python backend, handles
+            prediction requests, and returns the model's results to the user
+            interface.
+          </p>
+
+          <div class="technology-tags">
+            <span>Web Framework</span>
+            <span>Prediction Routes</span>
+          </div>
+        </article>
+
+        <!-- Tailwind CSS -->
+        <article class="technology-card tech-reveal" data-delay="3">
+          <div class="technology-card-top">
+            <div class="technology-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 9.2C5 6.5 7 5.2 10 5.2c4.5 0 5 3.3 7.2 3.3 1.3 0 2.2-.5 2.8-1.5C19 9.7 17 11 14 11c-4.5 0-5-3.3-7.2-3.3-1.3 0-2.2.5-2.8 1.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path
+                  d="M4 16.8c1-2.7 3-4 6-4 4.5 0 5 3.3 7.2 3.3 1.3 0 2.2-.5 2.8-1.5-1 2.7-3 4-6 4-4.5 0-5-3.3-7.2-3.3-1.3 0-2.2.5-2.8 1.5Z"
+                  stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <span class="technology-number">04</span>
+          </div>
+
+          <h3>Tailwind CSS</h3>
+
+          <p>
+            Supports a responsive and consistent interface, helping users
+            interact with the lung cancer risk prediction tool across desktop
+            and mobile devices.
+          </p>
+
+          <div class="technology-tags">
+            <span>Responsive UI</span>
+            <span>Interface Styling</span>
+          </div>
+        </article>
+      </div>
+
+      <!-- Workflow -->
+      <div class="technology-workflow tech-reveal">
+        <div class="technology-workflow-heading">
+          <div>
+            <span class="technology-eyebrow">MODEL WORKFLOW</span>
+            <h3>From Health Indicators to Prediction</h3>
+          </div>
+
+          <p>
+            A simplified overview of how LungScreen AI prepares 15 health and
+            lifestyle indicators before generating a prediction with the
+            trained Random Forest model.
+          </p>
+        </div>
+
+        <div class="technology-pipeline">
+          <!-- Step 01: User Input -->
+          <div class="pipeline-step">
+            <span class="pipeline-index">01</span>
+            <span class="pipeline-title">User Input</span>
+            <span class="pipeline-detail">15 health indicators</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <!-- Step 02: Preprocessing -->
+          <div class="pipeline-step">
+            <span class="pipeline-index">02</span>
+            <span class="pipeline-title">Preprocessing</span>
+            <span class="pipeline-detail">StandardScaler</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <!-- Step 03: Random Forest -->
+          <div class="pipeline-step pipeline-step-highlight">
+            <span class="pipeline-index">03</span>
+            <span class="pipeline-title">Random Forest</span>
+            <span class="pipeline-detail">Model inference</span>
+          </div>
+
+          <span class="pipeline-connector" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <!-- Step 04: Prediction -->
+          <div class="pipeline-step">
+            <span class="pipeline-index">04</span>
+            <span class="pipeline-title">Risk Prediction</span>
+            <span class="pipeline-detail">Result display</span>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="technology-bottom-note">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+
+          <p>
+            LungScreen AI is an educational machine learning project, not a
+            medical diagnostic tool. Its predictions should not replace
+            professional medical advice, clinical screening, or evaluation by
+            a qualified healthcare professional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Technology -->
+
+  <!-- Features -->
+  <section class="features-section" id="features">
+    <div class="features-container">
+      <!-- Section Heading -->
+      <div class="features-heading feature-reveal">
+        <span class="features-eyebrow">KEY CAPABILITIES</span>
+
+        <h2 class="features-title">
+          Making Lung Health Data
+          <span>More Understandable</span>
+        </h2>
+
+        <p class="features-description">
+          Explore the key capabilities behind LungScreen AI, from structured
+          health indicator input and machine learning processing to lung
+          cancer risk prediction results.
+        </p>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <article class="feature-card feature-reveal">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s-8-4.8-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.2-8 11-8 11Z"
+                  stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M5.5 12h4l2-3.5 2.2 6 1.5-2.5h3.3" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">01</span>
+          </div>
+
+          <h3>Lung Cancer Risk Prediction</h3>
+
+          <p>
+            Submit health and lifestyle indicators to receive a machine
+            learning prediction based on the patterns identified by the
+            trained Random Forest model.
+          </p>
+
+          <span class="feature-label">Machine Learning</span>
+        </article>
+
+        <!-- Feature 2 -->
+        <article class="feature-card feature-reveal" data-delay="1">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 19V5m0 14h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="m7 15 4-4 3 2 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <circle cx="19" cy="7" r="1.5" stroke="currentColor" stroke-width="1.4" />
+              </svg>
+            </span>
+            <span class="feature-index">02</span>
+          </div>
+
+          <h3>Prediction Results</h3>
+
+          <p>
+            View the output generated by the trained model through a clear
+            results interface designed to make prediction outcomes easier to
+            understand.
+          </p>
+
+          <span class="feature-label">Result Interpretation</span>
+        </article>
+
+        <!-- Feature 3 -->
+        <article class="feature-card feature-reveal" data-delay="2">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.6" />
+                <path d="M7 12h2.5l2-4 3 8 2-4H17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">03</span>
+          </div>
+
+          <h3>15 Health Indicators</h3>
+
+          <p>
+            Analyze 15 structured health and lifestyle indicators supplied by
+            the user as input features for the lung cancer risk prediction
+            model.
+          </p>
+
+          <span class="feature-label">Structured Inputs</span>
+        </article>
+
+        <!-- Feature 4 -->
+        <article class="feature-card feature-reveal" data-delay="1">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="6" cy="7" r="2" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="18" cy="7" r="2" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="12" cy="17" r="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="m7.7 8.3 2.9 6.1m5.7-6.1-2.9 6.1M8 7h8" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="feature-index">04</span>
+          </div>
+
+          <h3>Machine Learning Pipeline</h3>
+
+          <p>
+            Combine input preparation, StandardScaler feature scaling, and
+            Random Forest classification in a connected workflow for
+            generating model predictions.
+          </p>
+
+          <span class="feature-label">Scikit-learn</span>
+        </article>
+
+        <!-- Feature 5 -->
+        <article class="feature-card feature-reveal" data-delay="2">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6" />
+                <path d="M8 21h8m-4-4v4M7 12l3-3 2 2 4-4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">05</span>
+          </div>
+
+          <h3>Interactive Web Interface</h3>
+
+          <p>
+            Enter health and lifestyle information through an organized web
+            form and access the model's prediction results through an
+            intuitive interface.
+          </p>
+
+          <span class="feature-label">Flask Web App</span>
+        </article>
+
+        <!-- Feature 6 -->
+        <article class="feature-card feature-reveal" data-delay="3">
+          <div class="feature-card-top">
+            <span class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 3 20 6v5c0 5-3.4 8-8 10-4.6-2-8-5-8-10V6l8-3Z" stroke="currentColor" stroke-width="1.6"
+                  stroke-linejoin="round" />
+                <path d="m8.5 12 2.3 2.3 4.8-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="feature-index">06</span>
+          </div>
+
+          <h3>Responsible Risk Assessment</h3>
+
+          <p>
+            Explore model-generated risk predictions while understanding that
+            machine learning results are informational and require appropriate
+            medical context.
+          </p>
+
+          <span class="feature-label">Educational Project</span>
+        </article>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="features-disclaimer feature-reveal">
+        <span class="features-disclaimer-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+            <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </span>
+
+        <p>
+          LungScreen AI is an educational machine learning project and is not
+          intended to diagnose lung cancer. Its predictions are not a
+          substitute for professional medical evaluation, clinical screening,
+          or advice from a qualified healthcare professional.
+        </p>
+      </div>
+
+      <!-- CTA -->
+      <div class="features-cta feature-reveal">
+        <div class="features-cta-copy">
+          <span class="features-eyebrow">READY TO EXPLORE?</span>
+
+          <h3>See the lung health prediction workflow in action.</h3>
+
+          <p>
+            Explore the demo and discover how 15 health indicators are
+            processed by the machine learning model.
+          </p>
+        </div>
+
+        <a href="#try-it" class="features-cta-button">
+          Try Demo
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- End Features -->
+
+  <!-- Lung Cancer Assessment Form -->
+  <section class="assessment-section" id="try-it">
+    <div class="assessment-container">
+      <!-- Heading -->
+      <div class="assessment-heading form-reveal">
+        <span class="assessment-eyebrow">INTERACTIVE ASSESSMENT</span>
+
+        <h2 class="assessment-title">
+          Explore Your Lung Health
+          <span>Risk Prediction</span>
+        </h2>
+
+        <p class="assessment-description">
+          Enter the 15 health and lifestyle indicators below to explore how
+          the LungScreen AI machine learning model processes input data and
+          generates a lung cancer risk prediction.
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div class="assessment-card form-reveal">
+        <div class="assessment-card-header">
+          <div class="assessment-card-heading">
+            <span class="assessment-header-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M11 11V5.5a2 2 0 0 1 4 0V11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M11 9c-2-3-4-2-5-1-2 2-3 7-2 10 1 3 4 3 6 1l2-3" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M14 9c2-3 4-2 5-1 2 2 3 7 2 10-1 3-4 3-6 1l-2-3" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M13 11v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            </span>
+
+            <div>
+              <h3>Lung Health Indicator Form</h3>
+              <p>Complete all 15 required input fields.</p>
+            </div>
+          </div>
+
+          <span class="assessment-field-count">15 FEATURES</span>
+        </div>
+
+        <div class="assessment-form-content">
+          <!-- Sample Actions -->
+          <div class="assessment-toolbar">
+            <p>Want to explore the form first?</p>
+
+            <div class="assessment-toolbar-actions">
+              <button class="assessment-tool-button" type="button" id="fill-yes">
+                Sample A
+              </button>
+
+              <button class="assessment-tool-button" type="button" id="fill-no">
+                Sample B
+              </button>
+
+              <button class="assessment-tool-button assessment-clear-button" type="button" id="clear-form">
+                Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="assessment-sample-notice" id="sample-notice" role="status" aria-live="polite" hidden></div>
+
+          <form id="assessment-form" class="assessment-form" action="{{ url_for('predict') }}" method="POST">
+            <!-- Group 1: Personal Information -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">01</span>
+                Personal Information
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+                <div class="assessment-field">
+                  <label for="age">Age (years)</label>
+                  <input id="age" name="age" type="number" min="1" max="120" step="1" placeholder="e.g. 55" required />
+                </div>
+
+                <div class="assessment-field">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="smoking">Smoking</label>
+                  <select id="smoking" name="smoking" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Group 2: Lifestyle & Health Factors -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">02</span>
+                Lifestyle &amp; Health Factors
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+                <div class="assessment-field">
+                  <label for="yellow_fingers">Yellow Fingers</label>
+                  <select id="yellow_fingers" name="yellow_fingers" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="anxiety">Anxiety</label>
+                  <select id="anxiety" name="anxiety" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="peer_pressure">Peer Pressure</label>
+                  <select id="peer_pressure" name="peer_pressure" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="chronic_disease">Chronic Disease</label>
+                  <select id="chronic_disease" name="chronic_disease" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="fatigue">Fatigue</label>
+                  <select id="fatigue" name="fatigue" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="allergy">Allergy</label>
+                  <select id="allergy" name="allergy" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="alcohol_consuming">Alcohol Consumption</label>
+                  <select id="alcohol_consuming" name="alcohol_consuming" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Group 3: Symptoms -->
+            <fieldset class="assessment-group">
+              <legend>
+                <span class="assessment-group-number">03</span>
+                Respiratory Symptoms
+              </legend>
+
+              <div class="assessment-fields assessment-fields-three">
+                <div class="assessment-field">
+                  <label for="wheezing">Wheezing</label>
+                  <select id="wheezing" name="wheezing" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="coughing">Coughing</label>
+                  <select id="coughing" name="coughing" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="shortness_of_breath">Shortness of Breath</label>
+                  <select id="shortness_of_breath" name="shortness_of_breath" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="swallowing_difficulty">Swallowing Difficulty</label>
+                  <select id="swallowing_difficulty" name="swallowing_difficulty" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+
+                <div class="assessment-field">
+                  <label for="chest_pain">Chest Pain</label>
+                  <select id="chest_pain" name="chest_pain" required>
+                    <option value="" disabled selected>
+                      Select response
+                    </option>
+                    <option value="1">No (1)</option>
+                    <option value="2">Yes (2)</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Disclaimer -->
+            <div class="assessment-form-disclaimer">
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.4" />
+                <path d="M10 9v4M10 6.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+
+              <p>
+                LungScreen AI is an educational machine learning project, not
+                a medical diagnostic tool. Its prediction should not replace
+                professional medical advice or clinical screening.
+              </p>
+            </div>
+
+            <!-- Submit -->
+            <div class="assessment-form-footer">
+              <p>Review your inputs before submitting.</p>
+
+              <button class="assessment-submit-button" type="submit" id="assessment-submit">
+                <span>Analyze Lung Health Indicators</span>
+
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M4 10H16M10.5 4.5L16 10L10.5 15.5" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Prediction Result / Error Message -->
+      {% if prediction is defined or error is defined %}
+      <section class="prediction-result-section" id="prediction-result" aria-live="polite">
+        {% if error is defined %}
+        <div class="prediction-result-card prediction-error">
+          <div class="prediction-result-icon" aria-hidden="true">!</div>
+
+          <div class="prediction-result-content">
+            <span class="prediction-result-eyebrow">ASSESSMENT NOTICE</span>
+            <h3>Unable to Process Input</h3>
+            <p>{{ error }}</p>
+            <p class="prediction-result-note">
+              Please review the information you entered and try again.
+            </p>
+          </div>
+        </div>
+
+        {% elif prediction is defined %}
+        <div class="prediction-result-card">
+          <div class="prediction-result-icon" aria-hidden="true">
+            {% if prediction in ["Yes", "YES", "1"] %}!{% else %}✓{% endif %}
+          </div>
+
+          <div class="prediction-result-content">
+            <span class="prediction-result-eyebrow">MODEL OUTPUT</span>
+
+            <h3>
+              {% if prediction in ["Yes", "YES", "1"] %} Model Prediction:
+              Positive {% else %} Model Prediction: Negative {% endif %}
+            </h3>
+
+            <p class="prediction-result-description">
+              {% if prediction in ["Yes", "YES", "1"] %} The model classified
+              the submitted indicators into its positive prediction class. {%
+              else %} The model classified the submitted indicators into its
+              negative prediction class. {% endif %}
+            </p>
+
+            <div class="prediction-probability">
+              <div class="prediction-probability-header">
+                <span>Estimated probability for positive class</span>
+                <strong>{{ "%.1f"|format(probability * 100) }}%</strong>
+              </div>
+
+              <div class="prediction-probability-track" role="progressbar"
+                aria-label="Estimated probability for positive class" aria-valuemin="0" aria-valuemax="100"
+                aria-valuenow="{{ (probability * 100)|round(1) }}">
+                <div class="prediction-probability-fill" style="width: {{ (probability * 100)|round(1) }}%;"></div>
+              </div>
+            </div>
+
+            <p class="prediction-result-note">
+              This result represents the machine learning model's output, not
+              a confirmed diagnosis. Consult a qualified healthcare
+              professional for medical evaluation.
+            </p>
+
+            <a class="prediction-retry-button" href="#try-it">
+              Try Another Assessment
+            </a>
+          </div>
+        </div>
+        {% endif %}
+      </section>
+      {% endif %}
+    </div>
+  </section>
+  <!-- End Lung Cancer Assessment Form -->
+
+  <!-- Footer -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+      <!-- Footer Brand -->
+      <div class="footer-main">
+        <a class="footer-brand" href="#home" aria-label="LungScreen AI Home">
+          <span class="footer-brand-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path
+                d="M19 18V7.5C19 5.8 17.8 5 16.5 5C14.8 5 14 6.5 14 8.5V15C11.5 11.5 9 11 7.5 13C5.5 15.5 5 22 6 27C7 32 10 34 14 32L19 28"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M21 18V7.5C21 5.8 22.2 5 23.5 5C25.2 5 26 6.5 26 8.5V15C28.5 11.5 31 11 32.5 13C34.5 15.5 35 22 34 27C33 32 30 34 26 32L21 28"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M20 13V35M20 21L14 17M20 25L26 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+
+          <span class="footer-brand-wordmark">
+            LungScreen <span>AI</span>
+          </span>
+        </a>
+
+        <p class="footer-description">
+          Machine learning-powered lung cancer risk prediction, designed to
+          make health indicators and AI-generated insights easier to explore
+          and understand.
+        </p>
+
+        <div class="footer-status">
+          <span class="footer-status-dot"></span>
+          <span>Machine Learning Project</span>
+        </div>
+      </div>
+
+      <!-- Footer Navigation -->
+      <div class="footer-navigation">
+        <h3 class="footer-heading">Explore</h3>
+
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#technology">Technology</a>
+          <a href="#features">Features</a>
+          <a href="#try-it">Try Demo</a>
+        </nav>
+      </div>
+
+      <!-- Footer Disclaimer -->
+      <div class="footer-disclaimer">
+        <span class="footer-disclaimer-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3L21 7V12C21 17 17.2 20 12 22C6.8 20 3 17 3 12V7L12 3Z" stroke="currentColor"
+              stroke-width="1.6" stroke-linejoin="round" />
+            <path d="M12 8V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="12" cy="16.5" r="0.8" fill="currentColor" />
+          </svg>
+        </span>
+
+        <div>
+          <h3 class="footer-heading">Important Notice</h3>
+          <p>
+            LungScreen AI is an educational machine learning project, not a
+            medical diagnostic tool. Its predictions do not confirm or rule
+            out lung cancer and must not replace professional medical advice,
+            clinical screening, or evaluation by a qualified healthcare
+            professional.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="footer-copyright">
+          &copy; <span id="current-year"></span>
+          <span class="footer-copyright-brand">LungScreen AI</span>. All
+          rights reserved.
+        </p>
+
+        <a class="footer-back-to-top" href="#home">
+          Back to top
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 15V5M5.5 9.5L10 5L14.5 9.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <!-- End LungScreen AI Footer -->
+
+  <!-- Main JavaScript -->
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>

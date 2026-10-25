@@ -1,0 +1,21 @@
+{
+    "name": "LungScreen AI",
+    "short_name": "LungScreen",
+    "description": "An educational machine learning demo for lung health assessment.",
+    "icons": [
+        {
+            "src": "/static/images/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0D47A1",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "start_url": "/"
+}
